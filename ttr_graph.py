@@ -135,8 +135,30 @@ def calculate_score(board, tickets):
       score = score - ticket[2]
   return score
 
+def printTrains(trains):
+  print("List of trains:")
+  
+  for train in board:
+    links = []
+    i=1
+    for t in board[train]:
+      if i < len(board[train]):
+        links.append(t)
+      else:
+        links.append(t)  
+      i+=1
+    print(train+" is connected to:\n\t {}".format(links))
+
+def printTickets(tickets):
+  pointTotal = 0
+  for i in tickets:
+    tix = []
+    tix.append("If {} is connected to {}, you get {} points".format(i[0],i[1],i[2])) 
+    print(tix)
 # main
 
 convert_to_graph(board, trains)
+printTrains(trains)
+printTickets(tickets)
 score = calculate_score(board, tickets)
 print("The score is: {0}".format(score))
