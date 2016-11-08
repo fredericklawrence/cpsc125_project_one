@@ -131,11 +131,17 @@ def find_path(board, first_city, second_city):
   checked=[]
   
   for connectedToStartCity in board[first_city]:
-      
-
-      for second in board[second_city]:
+      if connectedToStartCity == second_city:
+          #path.append(connectedToStartCity)
+          
+          return true
+      for second in board[connectedToStartCity]:
           print(second)
-      
+          if second == second_city:
+              path.append(second)
+              
+              #print('')
+          
   
 """
     result = False
