@@ -22,7 +22,7 @@ trains = [
         ['Phoenix', 'Santa Fe'], 
         ['Los Angeles', 'El Paso'], 
         ['Phoenix', 'El Paso'], 
-        ['El P aso', 'Santa Fe'], 
+        ['El Paso', 'Santa Fe'], 
         ['Santa Fe', 'Denver'], 
         ['Helena', 'Duluth'], 
         ['Helena', 'Omaha'], 
@@ -126,38 +126,28 @@ def convert_to_graph(board, trains):
 
 
 def find_path(board, first_city, second_city):
-   
-  path=[]
-  checked=[]
   
   for connectedToStartCity in board[first_city]:
       if connectedToStartCity == second_city:
-          #path.append(connectedToStartCity)
-          
-          return true
+          return True
       for second in board[connectedToStartCity]:
-          print(second)
           if second == second_city:
-              path.append(second)
-              
-              #print('')
-          
+              return True
+          for third in board[second]:
+              if third == second_city:
+                  return True
+              for forth in board[third]:
+                  if forth == second_city:
+                      return True
+                  for fifth in board[forth]:
+                      if fifth == second_city:
+                          return True
+                      for sixth in board[fifth]:
+                          if sixth == second_city:
+                              return True
+            
   
-"""
-    result = False
-    # go through the first city paths
-    cities = board[first_city]
-    
-    for i in cities:
-      if a == second_city:
-        result = True
-      elif len(cities) != 0:
-        find_path(board, a, second_city)
-        board[first_city].pop()
-      else:
-        result = False
-    return result
-"""
+
 def calculate_score(board, tickets):
   score = 0
   for ticket in tickets:
